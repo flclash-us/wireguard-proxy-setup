@@ -1,0 +1,21 @@
+version: "3.8"
+services:
+  clash:
+    image: metacubex/clash-meta
+    container_name: clash
+    restart: always
+    ports:
+      - "7890:7890"
+      - "7891:7891"
+      - "9090:9090"
+    volumes:
+      - ./config:/root/.config/mclash
+    environment:
+      - TZ=Asia/Shanghai
+
+  yacd:
+    image: ghcr.io/haishanh/yacd:master
+    container_name: yacd
+    restart: always
+    ports:
+      - "1234:80"
